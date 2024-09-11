@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://7kjlhs507dvi"]
+
+[ext_resource type="Script" path="res://Actors/Projectile/trident.gd" id="1_cghhy"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_vpic3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhwn7"]
+size = Vector2(15, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6gat6"]
+size = Vector2(65, 10)
+
+[node name="tridentBody" type="CharacterBody2D"]
+script = ExtResource("1_cghhy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(80, 3)
+texture = SubResource("CanvasTexture_vpic3")
+
+[node name="frontCollision" type="CollisionShape2D" parent="."]
+position = Vector2(32.5, 0)
+shape = SubResource("RectangleShape2D_rhwn7")
+
+[node name="pickupArea" type="Area2D" parent="."]
+
+[node name="backCollision" type="CollisionShape2D" parent="pickupArea"]
+position = Vector2(-7.5, 0)
+shape = SubResource("RectangleShape2D_6gat6")
+disabled = true

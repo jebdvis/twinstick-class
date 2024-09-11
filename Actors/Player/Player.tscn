@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgk3yf5b18363"]
+[gd_scene load_steps=7 format=3 uid="uid://cgk3yf5b18363"]
 
 [ext_resource type="Script" path="res://Actors/Player/player.gd" id="1_yu7ye"]
 [ext_resource type="PackedScene" uid="uid://vib0m2332c7f" path="res://Actors/Projectile/projectile.tscn" id="2_7fi8e"]
+[ext_resource type="PackedScene" uid="uid://7kjlhs507dvi" path="res://Actors/Projectile/trident.tscn" id="3_kpqu7"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_h0gso"]
 
@@ -11,9 +12,11 @@
 size = Vector2(50, 50)
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 1
 motion_mode = 1
 script = ExtResource("1_yu7ye")
 projectile_scene = ExtResource("2_7fi8e")
+trident_scene = ExtResource("3_kpqu7")
 
 [node name="MainSprite" type="Sprite2D" parent="."]
 scale = Vector2(50, 50)
@@ -25,6 +28,7 @@ scale = Vector2(0.2, 0.2)
 texture = SubResource("CanvasTexture_issdj")
 
 [node name="MainCollider" type="CollisionShape2D" parent="."]
+z_index = 1
 shape = SubResource("RectangleShape2D_w0y5j")
 
 [node name="ProjectileRefPoint" type="Node2D" parent="."]

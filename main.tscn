@@ -1,8 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6kidse6y63l2"]
+[gd_scene load_steps=5 format=3 uid="uid://c6kidse6y63l2"]
 
 [ext_resource type="PackedScene" uid="uid://cgk3yf5b18363" path="res://Actors/Player/Player.tscn" id="1_4yu32"]
+[ext_resource type="PackedScene" uid="uid://pptgkm85wuri" path="res://Actors/Temp_Walls/sideWall.tscn" id="3_834a7"]
+[ext_resource type="PackedScene" uid="uid://b8x508x42e76f" path="res://Actors/Temp_Walls/topWall.tscn" id="3_iiw0g"]
+[ext_resource type="PackedScene" uid="uid://3lgdlgc4m3t7" path="res://Actors/Temp_Walls/botWall.tscn" id="4_dnua4"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_4yu32")]
 position = Vector2(631, 362)
+
+[node name="Top Wall" parent="." instance=ExtResource("3_iiw0g")]
+position = Vector2(289, 57)
+
+[node name="Top Wall2" parent="." instance=ExtResource("3_iiw0g")]
+position = Vector2(862, 57)
+
+[node name="sideWall" parent="." instance=ExtResource("3_834a7")]
+position = Vector2(11, 400)
+
+[node name="sideWall2" parent="." instance=ExtResource("3_834a7")]
+position = Vector2(1140, 401)
+
+[node name="botWall" parent="." instance=ExtResource("4_dnua4")]
+position = Vector2(288, 639)
+
+[node name="botWall2" parent="." instance=ExtResource("4_dnua4")]
+position = Vector2(863, 639)
