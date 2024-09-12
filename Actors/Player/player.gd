@@ -27,7 +27,7 @@ func _input(event):
 			get_parent().add_child(new_trident)
 			var trident_forward = Vector2.from_angle(rotation)
 			new_trident.position = $ProjectileRefPoint.global_position
-			new_trident.fire(trident_forward,1500)
+			new_trident.fire(trident_forward,1000)
 			hasTrident = false
 func _physics_process(delta: float) -> void:
 	look_at(get_viewport().get_mouse_position())
