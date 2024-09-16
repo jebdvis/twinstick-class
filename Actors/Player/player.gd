@@ -29,8 +29,29 @@ func _input(event):
 			new_trident.position = $ProjectileRefPoint.global_position
 			new_trident.fire(trident_forward,1000)
 			hasTrident = false
+			
+func _process(delta):
+	$MainSprite.rotation = -rotation
+	$Running.rotation = -rotation
+	$MainCollider.rotation = -rotation
+	pass
+	
+	
 func _physics_process(delta: float) -> void:
+	#print(rotation_degrees)
 	look_at(get_viewport().get_mouse_position())
-
+	if Input.is_action_pressed("move_down") or Input.is_action_pressed("move_up") or Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
+		$MainSprite.visible = false
+		$Running.visible = true
+	else:
+		$MainSprite.visible = true
+		$Running.visible = false
+		
+	if abs(rotation) > PI/2:
+		$MainSprite.flip_h = true
+		$Running.flip_h = true
+	elif abs(rotation) < PI/2:
+		$MainSprite.flip_h = false
+		$Running.flip_h = false
 	velocity = Input.get_vector("move_left","move_right","move_up","move_down") * move_speed
 	move_and_slide()

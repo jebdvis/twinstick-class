@@ -6,9 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bgc6hpqndtu5h" path="res://Actors/Player/Gnome-stand.png" id="4_jn555"]
 [ext_resource type="Texture2D" uid="uid://brjotay3la68e" path="res://Actors/Player/gnome running/Sprite-0001-Sheet.ase" id="5_x3l7v"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_74cpd"]
-radius = 24.0
-height = 62.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w0y5j"]
+size = Vector2(50, 50)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_issdj"]
 
@@ -84,14 +83,14 @@ projectile_scene = ExtResource("2_7fi8e")
 trident_scene = ExtResource("3_kpqu7")
 
 [node name="MainSprite" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
 scale = Vector2(4, 4)
 texture = ExtResource("4_jn555")
 
 [node name="MainCollider" type="CollisionShape2D" parent="."]
 z_index = 1
-position = Vector2(-4, 0)
-shape = SubResource("CapsuleShape2D_74cpd")
+shape = SubResource("RectangleShape2D_w0y5j")
 
 [node name="ProjectileRefPoint" type="Node2D" parent="."]
 position = Vector2(32, 0)
@@ -107,4 +106,4 @@ texture_filter = 1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_38s0g")
 autoplay = "default"
-frame_progress = 0.802045
+frame_progress = 0.244764

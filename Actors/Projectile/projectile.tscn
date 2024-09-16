@@ -9,6 +9,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_rtxl6"]
 
 [node name="projectile" type="Area2D"]
+z_index = 2
 position = Vector2(-11, -2)
 script = ExtResource("1_yko3f")
 
