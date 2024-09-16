@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var move_speed: float = 200
+@export var move_speed: float = 400
 @export var projectile_scene: Resource
 @export var trident_scene: Resource
 

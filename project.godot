@@ -21,9 +21,9 @@ aseprite_executable_path="C:/Aseprite/build/bin/aseprite.exe"
 
 [display]
 
-window/size/mode=2
-window/stretch/mode="viewport"
-window/stretch/scale_mode="integer"
+window/size/mode=4
+window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=0
 
 [editor_plugins]
 

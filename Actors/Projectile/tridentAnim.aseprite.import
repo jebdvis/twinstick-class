@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctgu603ofgb7r"
-path="res://.godot/imported/Sprite-0002.aseprite-f5ac680878cc56b09b9afb1502fe52f0.ctex"
+uid="uid://utdlmcba3rla"
+path="res://.godot/imported/tridentAnim.aseprite-153e34af41a81699870c0ccac85f1ca9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Actors/Player/Sprite-0002.aseprite"
-dest_files=["res://.godot/imported/Sprite-0002.aseprite-f5ac680878cc56b09b9afb1502fe52f0.ctex"]
+source_file="res://Actors/Projectile/tridentAnim.aseprite"
+dest_files=["res://.godot/imported/tridentAnim.aseprite-153e34af41a81699870c0ccac85f1ca9.ctex"]
 
 [params]
 
