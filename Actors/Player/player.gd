@@ -30,11 +30,17 @@ func _input(event):
 			new_trident.fire(trident_forward,1000)
 			hasTrident = false
 			
+	if event.is_action_pressed("roll"):
+		$MainSprite.visible = false
+		$Running.visible = false
+		$Roll.visible = true
+		$Roll.play("default")
+			
 func _process(delta):
 	$MainSprite.rotation = -rotation
 	$Running.rotation = -rotation
+	$Roll.rotation = -rotation
 	$MainCollider.rotation = -rotation
-	pass
 	
 	
 func _physics_process(delta: float) -> void:
