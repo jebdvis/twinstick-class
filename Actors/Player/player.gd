@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var projectile_scene: Resource
 @export var trident_scene: Resource
 
+@onready var animPlayer = $MainSprite/AnimationPlayer
+
 var hasTrident = true
 
 func tridentPickup(body):
@@ -17,16 +19,16 @@ func _input(event):
 		if event.button_index == 1 and event.is_pressed():
 			var new_projectile = projectile_scene.instantiate()
 			get_parent().add_child(new_projectile)
-			var projectile_forward = Vector2.from_angle(rotation)
-			new_projectile.position = $ProjectileRefPoint.global_position
+			var projectile_forward = position.direction_to(get_global_mouse_position())
+			new_projectile.position = $aimIndicCenter/AimIndic.global_position
 			new_projectile.fire(projectile_forward, 2000)
 			
 		if event.button_index == 2 and event.is_pressed() and hasTrident == true:
 			var new_trident = trident_scene.instantiate()
 			new_trident.get_child(2).body_entered.connect(tridentPickup)
 			get_parent().add_child(new_trident)
-			var trident_forward = Vector2.from_angle(rotation)
-			new_trident.position = $ProjectileRefPoint.global_position
+			var trident_forward = position.direction_to(get_global_mouse_position())
+			new_trident.position = $aimIndicCenter/AimIndic.global_position
 			new_trident.fire(trident_forward,1000)
 			hasTrident = false
 			
@@ -37,27 +39,34 @@ func _input(event):
 		$Roll.play("default")
 			
 func _process(delta):
-	$MainSprite.rotation = -rotation
-	$Running.rotation = -rotation
-	$Roll.rotation = -rotation
-	$MainCollider.rotation = -rotation
+	pass
 	
 	
 func _physics_process(delta: float) -> void:
-	#print(rotation_degrees)
-	look_at(get_viewport().get_mouse_position())
-	if Input.is_action_pressed("move_down") or Input.is_action_pressed("move_up") or Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
-		$MainSprite.visible = false
-		$Running.visible = true
+	$aimIndicCenter.look_at(get_global_mouse_position())
+	var mouseRotation = rad_to_deg($aimIndicCenter.rotation)
+	
+	if velocity.length() > 10:
+		if abs(mouseRotation) <= 90: 
+			animPlayer.play("running")
+		elif abs(mouseRotation) > 90:
+			animPlayer.play("running_left")
 	else:
-		$MainSprite.visible = true
-		$Running.visible = false
+		if abs(mouseRotation) <= 90: 
+			animPlayer.play("idle_right")
+		elif abs(mouseRotation) > 90:
+			animPlayer.play("idle_left")
 		
-	if abs(rotation) > PI/2:
-		$MainSprite.flip_h = true
-		$Running.flip_h = true
-	elif abs(rotation) < PI/2:
-		$MainSprite.flip_h = false
-		$Running.flip_h = false
+		
+		
 	velocity = Input.get_vector("move_left","move_right","move_up","move_down") * move_speed
 	move_and_slide()
+	
+	var angle = rad_to_deg(velocity.angle())
+	if velocity.length() < 10:
+		pass
+		#$MainSprite/AnimationPlayer.play("idle")
+	else:
+		pass
+		#if angle:
+			
