@@ -17,11 +17,8 @@ func tridentPickup(body):
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and event.is_pressed():
-			var new_projectile = projectile_scene.instantiate()
-			get_parent().add_child(new_projectile)
-			var projectile_forward = position.direction_to(get_global_mouse_position())
-			new_projectile.position = $aimIndicCenter/AimIndic.global_position
-			new_projectile.fire(projectile_forward, 2000)
+			$aimIndicCenter/CPUParticles2D.emitting = true
+			
 			
 		if event.button_index == 2 and event.is_pressed() and hasTrident == true:
 			var new_trident = trident_scene.instantiate()
