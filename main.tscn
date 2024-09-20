@@ -226,7 +226,6 @@ sources/0 = SubResource("TileSetAtlasSource_buyuy")
 z_index = 2
 position = Vector2(631, 362)
 collision_mask = 31
-move_speed = 400.0
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
