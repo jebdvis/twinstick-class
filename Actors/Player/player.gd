@@ -19,7 +19,6 @@ func _input(event):
 		if event.button_index == 1 and event.is_pressed():
 			$aimIndicCenter/CPUParticles2D.emitting = true
 			
-			
 		if event.button_index == 2 and event.is_pressed() and hasTrident == true:
 			var new_trident = trident_scene.instantiate()
 			new_trident.get_child(2).body_entered.connect(tridentPickup)
@@ -41,29 +40,22 @@ func _process(delta):
 	
 func _physics_process(delta: float) -> void:
 	$aimIndicCenter.look_at(get_global_mouse_position())
-	var mouseRotation = rad_to_deg($aimIndicCenter.rotation)
+	var mouseRotation = abs(fmod(rad_to_deg($aimIndicCenter.rotation), 360))
 	
 	if velocity.length() > 10:
-		if abs(mouseRotation) <= 90: 
+		if mouseRotation < 90 or mouseRotation > 270: 
 			animPlayer.play("running")
-		elif abs(mouseRotation) > 90:
+		elif mouseRotation > 90 and mouseRotation < 270:
 			animPlayer.play("running_left")
 	else:
-		if abs(mouseRotation) <= 90: 
-			animPlayer.play("idle_right")
-		elif abs(mouseRotation) > 90:
+		if mouseRotation > 90 and mouseRotation < 270 :
 			animPlayer.play("idle_left")
+		else: 
+			animPlayer.play("idle_right")
 		
 		
 		
 	velocity = Input.get_vector("move_left","move_right","move_up","move_down") * move_speed
 	move_and_slide()
 	
-	var angle = rad_to_deg(velocity.angle())
-	if velocity.length() < 10:
-		pass
-		#$MainSprite/AnimationPlayer.play("idle")
-	else:
-		pass
-		#if angle:
 			

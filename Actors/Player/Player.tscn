@@ -1,11 +1,51 @@
-[gd_scene load_steps=36 format=3 uid="uid://cgk3yf5b18363"]
+[gd_scene load_steps=40 format=3 uid="uid://cgk3yf5b18363"]
 
 [ext_resource type="Script" path="res://Actors/Player/player.gd" id="1_yu7ye"]
-[ext_resource type="PackedScene" uid="uid://vib0m2332c7f" path="res://Actors/Projectile/projectile.tscn" id="2_7fi8e"]
 [ext_resource type="PackedScene" uid="uid://7kjlhs507dvi" path="res://Actors/Projectile/trident.tscn" id="3_kpqu7"]
 [ext_resource type="Texture2D" uid="uid://du2u2ojy1r6j3" path="res://Actors/Player/MasterGnomeSheet.aseprite" id="4_t73m5"]
 [ext_resource type="Texture2D" uid="uid://brjotay3la68e" path="res://Actors/Player/gnome running/Sprite-0001-Sheet.ase" id="5_vb3v2"]
 [ext_resource type="Texture2D" uid="uid://dap21xbup82fh" path="res://Actors/Player/gnome roll/Gnome-roll-Sheet.png" id="6_2e30b"]
+
+[sub_resource type="GDScript" id="GDScript_bd3po"]
+script/source = "extends Area2D
+
+var velocity: Vector2 = Vector2(0,0)
+
+func fire(forward: Vector2, speed: float):
+	velocity = forward * speed
+	look_at(position + forward)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	position += velocity * delta
+
+
+func _on_time_to_live_timeout() -> void:
+	queue_free()
+
+
+func _on_body_entered(body: Node2D) -> void:
+	(body as Enemy).hit(1)
+"
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_mas4g"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_y7kfl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rtxl6"]
+
+[sub_resource type="PackedScene" id="PackedScene_b1l1m"]
+_bundled = {
+"conn_count": 2,
+"conns": PackedInt32Array(1073741830, 1073741829, 28, 27, 2, 0, 0, 1073741832, 1073741831, 30, 29, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("projectile", "Area2D", "z_index", "position", "collision_layer", "collision_mask", "script", "MainSprite", "Sprite2D", "scale", "texture", "Sprite2D", "Sprite2D", "position", "scale", "texture", "Sprite2D2", "Sprite2D", "position", "scale", "texture", "CollisionShape2D", "CollisionShape2D", "shape", "TimeToLive", "Timer", "autostart", "_on_body_entered", "body_entered", "_on_time_to_live_timeout", "timeout"),
+"node_count": 6,
+"node_paths": [NodePath("."), NodePath("./MainSprite"), NodePath("./MainSprite"), NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("TimeToLive")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 5, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 0, 1073741824, 0, 8, 7, -1, 2, 9, 5, 10, 6, 0, 1073741825, 0, 12, 11, -1, 3, 13, 7, 14, 8, 15, 9, 0, 1073741826, 0, 17, 16, -1, 3, 18, 10, 19, 11, 20, 12, 0, 1073741827, 0, 22, 21, -1, 1, 23, 13, 0, 1073741828, 0, 25, 24, -1, 1, 26, 14, 0),
+"variants": [2, Vector2(-11, -2), 0, 2, SubResource("GDScript_bd3po"), Vector2(20, 20), SubResource("CanvasTexture_mas4g"), Vector2(-0.65, 0), Vector2(-0.537373, 0.509345), SubResource("CanvasTexture_y7kfl"), Vector2(-1.05, 0), Vector2(-0.537373, 0.325345), SubResource("CanvasTexture_y7kfl"), SubResource("CircleShape2D_rtxl6"), true],
+"version": 3
+}
 
 [sub_resource type="Animation" id="Animation_ecwvv"]
 length = 0.001
@@ -365,7 +405,7 @@ z_index = 1
 collision_mask = 15
 motion_mode = 1
 script = ExtResource("1_yu7ye")
-projectile_scene = ExtResource("2_7fi8e")
+projectile_scene = SubResource("PackedScene_b1l1m")
 trident_scene = ExtResource("3_kpqu7")
 
 [node name="MainSprite" type="Sprite2D" parent="."]
@@ -430,6 +470,7 @@ lifetime = 0.3
 one_shot = true
 explosiveness = 1.0
 lifetime_randomness = 0.53
+local_coords = true
 gravity = Vector2(0, 0)
 initial_velocity_max = 500.0
 scale_amount_max = 1.5
