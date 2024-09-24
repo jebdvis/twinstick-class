@@ -12,6 +12,6 @@ func process_state(delta: float):
 	var potential_targets = detect_range.get_overlapping_bodies()
 	if not potential_targets.is_empty():
 		chasing_state.target = (potential_targets[0]) as CharacterBody2D
+		get_parent().get_parent().get_node("AnimationPlayer").play("sleeping")
 		change_state.emit(chasing_state)
-		
-		
+	
