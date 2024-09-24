@@ -5,9 +5,8 @@
 [ext_resource type="Script" path="res://Actors/Enemies/idleMonkey.gd" id="3_otul4"]
 [ext_resource type="Script" path="res://Actors/Enemies/chasingMonkey.gd" id="4_rhpoy"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cjeh3"]
-radius = 5.5
-height = 15.5
+[sub_resource type="CircleShape2D" id="CircleShape2D_qvngq"]
+radius = 7.00446
 
 [sub_resource type="Animation" id="Animation_vc8qq"]
 length = 0.001
@@ -555,7 +554,9 @@ radius = 43.4173
 [node name="psychoMonkey" type="CharacterBody2D" node_paths=PackedStringArray("initial_state")]
 scale = Vector2(4, 4)
 collision_layer = 2
-collision_mask = 5
+collision_mask = 21
+motion_mode = 1
+safe_margin = 5.0
 script = ExtResource("1_xtq8j")
 initial_state = NodePath("States/Idle")
 
@@ -575,7 +576,7 @@ initial_velocity_max = 70.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.75)
-shape = SubResource("CapsuleShape2D_cjeh3")
+shape = SubResource("CircleShape2D_qvngq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_bl5hy")
@@ -587,6 +588,7 @@ libraries = {
 "": SubResource("AnimationLibrary_525s1")
 }
 autoplay = "sleeping_2"
+speed_scale = 1.2
 
 [node name="States" type="Node" parent="."]
 

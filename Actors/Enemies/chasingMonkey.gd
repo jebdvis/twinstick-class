@@ -14,7 +14,6 @@ func process_state(delta: float):
 	body.move_and_slide()
 	
 func anim_controller(anim_player:AnimationPlayer, direction:float):
-	print(direction)
 	if direction >= -22.5 and direction <=  22.5:
 		if anim_player.current_animation != "run_right":
 			anim_player.stop()
@@ -47,3 +46,7 @@ func anim_controller(anim_player:AnimationPlayer, direction:float):
 		if anim_player.current_animation != "run_down_right":
 			anim_player.stop()
 		anim_player.play("run_down_right")
+
+
+		
+		

@@ -1,10 +1,8 @@
-[gd_scene load_steps=40 format=3 uid="uid://cgk3yf5b18363"]
+[gd_scene load_steps=20 format=3 uid="uid://cgk3yf5b18363"]
 
 [ext_resource type="Script" path="res://Actors/Player/player.gd" id="1_yu7ye"]
 [ext_resource type="PackedScene" uid="uid://7kjlhs507dvi" path="res://Actors/Projectile/trident.tscn" id="3_kpqu7"]
 [ext_resource type="Texture2D" uid="uid://du2u2ojy1r6j3" path="res://Actors/Player/MasterGnomeSheet.aseprite" id="4_t73m5"]
-[ext_resource type="Texture2D" uid="uid://brjotay3la68e" path="res://Actors/Player/gnome running/Sprite-0001-Sheet.ase" id="5_vb3v2"]
-[ext_resource type="Texture2D" uid="uid://dap21xbup82fh" path="res://Actors/Player/gnome roll/Gnome-roll-Sheet.png" id="6_2e30b"]
 
 [sub_resource type="GDScript" id="GDScript_bd3po"]
 script/source = "extends Area2D
@@ -136,6 +134,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_113vh"]
 resource_name = "roll_left"
+length = 0.35
 step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -156,15 +155,15 @@ tracks/1/path = NodePath("MainSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(-0.0250003, 0.041666, 0.108333, 0.175, 0.241666, 0.308333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
+"values": [1, 2, 3, 4, 5, 6]
 }
 
 [sub_resource type="Animation" id="Animation_2y08m"]
 resource_name = "rolling"
-length = 0.5
+length = 0.35
 step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -173,10 +172,10 @@ tracks/0/path = NodePath("MainSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.041666, 0.108333, 0.175, 0.241666, 0.308333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
+"values": [1, 2, 3, 4, 5, 6]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -262,137 +261,9 @@ _data = {
 "running_left": SubResource("Animation_nndn1")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_74cpd"]
-radius = 24.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qbo35"]
+radius = 20.0
 height = 62.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_irvp8"]
-atlas = ExtResource("5_vb3v2")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dfaxc"]
-atlas = ExtResource("5_vb3v2")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_01jxa"]
-atlas = ExtResource("5_vb3v2")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wqwu8"]
-atlas = ExtResource("5_vb3v2")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qci63"]
-atlas = ExtResource("5_vb3v2")
-region = Rect2(64, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bqhfo"]
-atlas = ExtResource("5_vb3v2")
-region = Rect2(80, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i4rtg"]
-atlas = ExtResource("5_vb3v2")
-region = Rect2(96, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xhq6w"]
-atlas = ExtResource("5_vb3v2")
-region = Rect2(112, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_38s0g"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_irvp8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dfaxc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_01jxa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wqwu8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qci63")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bqhfo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i4rtg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xhq6w")
-}],
-"loop": true,
-"name": &"default",
-"speed": 15.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c4rfv"]
-atlas = ExtResource("6_2e30b")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_duc7r"]
-atlas = ExtResource("6_2e30b")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ykgen"]
-atlas = ExtResource("6_2e30b")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0lmbt"]
-atlas = ExtResource("6_2e30b")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_48mha"]
-atlas = ExtResource("6_2e30b")
-region = Rect2(64, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xcdgt"]
-atlas = ExtResource("6_2e30b")
-region = Rect2(80, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0ed2d"]
-atlas = ExtResource("6_2e30b")
-region = Rect2(96, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xyt7d"]
-atlas = ExtResource("6_2e30b")
-region = Rect2(112, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_mimoj"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c4rfv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_duc7r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ykgen")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0lmbt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_48mha")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xcdgt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0ed2d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xyt7d")
-}],
-"loop": false,
-"name": &"default",
-"speed": 10.0
-}]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_issdj"]
 
@@ -404,6 +275,7 @@ point_count = 3
 z_index = 1
 collision_mask = 15
 motion_mode = 1
+safe_margin = 2.666
 script = ExtResource("1_yu7ye")
 projectile_scene = SubResource("PackedScene_b1l1m")
 trident_scene = ExtResource("3_kpqu7")
@@ -424,29 +296,13 @@ libraries = {
 autoplay = "idle_right"
 speed_scale = 0.6
 
-[node name="MainCollider" type="CollisionShape2D" parent="."]
-visible = false
-z_index = 1
-position = Vector2(-4, 0)
-shape = SubResource("CapsuleShape2D_74cpd")
-
 [node name="ProjectileRefPoint" type="Node2D" parent="."]
 position = Vector2(32, 0)
 
-[node name="Running" type="AnimatedSprite2D" parent="."]
+[node name="MainCollider" type="CollisionShape2D" parent="."]
 visible = false
-texture_filter = 1
-scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_38s0g")
-autoplay = "default"
-frame_progress = 0.98435
-
-[node name="Roll" type="AnimatedSprite2D" parent="."]
-visible = false
-scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_mimoj")
-frame = 7
-frame_progress = 1.0
+z_index = 1
+shape = SubResource("CapsuleShape2D_qbo35")
 
 [node name="aimIndicCenter" type="Node2D" parent="."]
 
@@ -471,8 +327,11 @@ one_shot = true
 explosiveness = 1.0
 lifetime_randomness = 0.53
 local_coords = true
+draw_order = 1
 gravity = Vector2(0, 0)
 initial_velocity_max = 500.0
 scale_amount_max = 1.5
 scale_amount_curve = SubResource("Curve_y8b43")
 color = Color(0.672142, 0.627135, 0.116728, 1)
+
+[connection signal="animation_finished" from="MainSprite/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

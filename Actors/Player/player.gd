@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var animPlayer = $MainSprite/AnimationPlayer
 
 var hasTrident = true
+var rolling:bool = false
 
 func tridentPickup(body):
 	if body == self:
@@ -29,11 +30,10 @@ func _input(event):
 			hasTrident = false
 			
 	if event.is_action_pressed("roll"):
-		$MainSprite.visible = false
-		$Running.visible = false
-		$Roll.visible = true
-		$Roll.play("default")
-			
+		if velocity != Vector2(0,0):
+			rolling = true
+			move_speed = 600
+						
 func _process(delta):
 	pass
 	
@@ -42,16 +42,26 @@ func _physics_process(delta: float) -> void:
 	$aimIndicCenter.look_at(get_global_mouse_position())
 	var mouseRotation = abs(fmod(rad_to_deg($aimIndicCenter.rotation), 360))
 	
-	if velocity.length() > 10:
-		if mouseRotation < 90 or mouseRotation > 270: 
-			animPlayer.play("running")
-		elif mouseRotation > 90 and mouseRotation < 270:
-			animPlayer.play("running_left")
+	if rolling == true:
+		if animPlayer.current_animation == "rolling" or animPlayer.current_animation == "roll_left":
+			pass
+		else:
+			if (velocity.angle() < PI/2) and (velocity.angle() > -PI/2): 
+				animPlayer.play("rolling")
+			else:
+				animPlayer.play("roll_left")
+			
 	else:
-		if mouseRotation > 90 and mouseRotation < 270 :
-			animPlayer.play("idle_left")
-		else: 
-			animPlayer.play("idle_right")
+		if velocity.length() > 10:
+			if mouseRotation < 90 or mouseRotation > 270: 
+				animPlayer.play("running")
+			elif mouseRotation > 90 and mouseRotation < 270:
+				animPlayer.play("running_left")
+		else:
+			if mouseRotation > 90 and mouseRotation < 270 :
+				animPlayer.play("idle_left")
+			else: 
+				animPlayer.play("idle_right")
 		
 		
 		
@@ -59,3 +69,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 			
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "rolling" or anim_name == "roll_left":
+		rolling = false
+		move_speed = 400

@@ -258,6 +258,7 @@ position = Vector2(578, 327)
 script = ExtResource("2_p1wep")
 follow_mode = 2
 follow_target = NodePath("../Player")
+snap_to_pixel = true
 tween_resource = SubResource("Resource_wfq14")
 follow_damping = true
 dead_zone_width = 0.056
