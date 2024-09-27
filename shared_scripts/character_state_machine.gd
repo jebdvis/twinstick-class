@@ -23,8 +23,8 @@ func _ready():
 func initialize():
 	pass
 	
-func _physics_process(delta: float) -> void:
-	current_state.process_state(delta)
+func _physics_process(_delta: float) -> void:
+	current_state.process_state(_delta)
 	
 func on_change_state(next_state: State):
 	current_state.on_exit_state()

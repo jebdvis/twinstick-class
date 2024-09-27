@@ -34,11 +34,11 @@ func _input(event):
 			rolling = true
 			move_speed = 600
 						
-func _process(delta):
+func _process(_delta):
 	pass
 	
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	$aimIndicCenter.look_at(get_global_mouse_position())
 	var mouseRotation = abs(fmod(rad_to_deg($aimIndicCenter.rotation), 360))
 	

@@ -1,6 +1,7 @@
 extends Node
 class_name State
 
+@warning_ignore("unused_signal")
 signal change_state(new_state)
 
 var main_sprite : Sprite2D
@@ -15,8 +16,8 @@ func on_enter_state():
 func on_exit_state():
 	pass
 	
-func process_state(delta: float):
+func process_state(_delta: float):
 	pass
 
-func process_input(event: InputEvent):
+func process_input(_event: InputEvent):
 	pass

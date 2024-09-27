@@ -1,9 +1,9 @@
 [gd_scene load_steps=20 format=3 uid="uid://bbn4p2vo0bgbo"]
 
 [ext_resource type="Texture2D" uid="uid://757bgdvuao0v" path="res://Actors/Enemies/psycho monkey/loose sprites gbstudio.png" id="1_bl5hy"]
-[ext_resource type="Script" path="res://Actors/Enemies/psycho_monkey.gd" id="1_xtq8j"]
-[ext_resource type="Script" path="res://Actors/Enemies/idleMonkey.gd" id="3_otul4"]
-[ext_resource type="Script" path="res://Actors/Enemies/chasingMonkey.gd" id="4_rhpoy"]
+[ext_resource type="Script" path="res://Actors/Enemies/psycho monkey/monkey-actor/psycho_monkey.gd" id="1_xtq8j"]
+[ext_resource type="Script" path="res://Actors/Enemies/psycho monkey/monkey-actor/idleMonkey.gd" id="3_otul4"]
+[ext_resource type="Script" path="res://Actors/Enemies/psycho monkey/monkey-actor/chasingMonkey.gd" id="4_rhpoy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qvngq"]
 radius = 7.00446

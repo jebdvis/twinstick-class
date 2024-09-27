@@ -8,7 +8,7 @@ func initialize():
 	detect_range = body.get_node("DetectionRange")
 	chasing_state = get_parent().get_node("Chasing")
 	
-func process_state(delta: float):
+func process_state(_delta: float):
 	var potential_targets = detect_range.get_overlapping_bodies()
 	if not potential_targets.is_empty():
 		chasing_state.target = (potential_targets[0]) as CharacterBody2D
