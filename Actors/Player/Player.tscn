@@ -316,13 +316,13 @@ texture = SubResource("CanvasTexture_issdj")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="aimIndicCenter/Area2D"]
 position = Vector2(7.97349, 0.302187)
 scale = Vector2(2.14015, 1.48509)
-polygon = PackedVector2Array(10, 0, 76, 58, 76, -51)
+polygon = PackedVector2Array(10, 0, 97.6691, 67.8059, 97.2018, -66.8661)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="aimIndicCenter"]
 position = Vector2(29, 0)
 emitting = false
 amount = 800
-lifetime = 0.3
+lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 lifetime_randomness = 0.53
