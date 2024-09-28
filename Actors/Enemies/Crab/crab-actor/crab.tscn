@@ -9,24 +9,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghv38"]
 size = Vector2(65, 54)
 
-[sub_resource type="Animation" id="Animation_8oike"]
-resource_name = "idle"
-length = 0.50001
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [15, 16, 17, 18, 19]
-}
-
 [sub_resource type="Animation" id="Animation_sg5af"]
 length = 0.001
 tracks/0/type = "value"
@@ -42,10 +24,9 @@ tracks/0/keys = {
 "values": [15]
 }
 
-[sub_resource type="Animation" id="Animation_01ld6"]
-resource_name = "moving"
+[sub_resource type="Animation" id="Animation_duyqr"]
+resource_name = "attack-down"
 length = 0.40001
-loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -57,7 +38,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [5, 6, 7, 8]
 }
 
 [sub_resource type="Animation" id="Animation_ikny5"]
@@ -77,9 +58,28 @@ tracks/0/keys = {
 "values": [10, 11, 12, 13]
 }
 
-[sub_resource type="Animation" id="Animation_duyqr"]
-resource_name = "attack-down"
+[sub_resource type="Animation" id="Animation_8oike"]
+resource_name = "idle"
+length = 0.50001
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [15, 16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_01ld6"]
+resource_name = "moving"
 length = 0.40001
+loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -91,7 +91,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [5, 6, 7, 8]
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0vtmw"]
