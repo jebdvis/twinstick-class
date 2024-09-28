@@ -6,8 +6,8 @@
 [ext_resource type="Script" path="res://Actors/Enemies/Crab/crab-actor/crab_chasing_attack.gd" id="4_kb6h1"]
 [ext_resource type="Script" path="res://Actors/Enemies/Crab/crab-actor/crab_teleportin.gd" id="5_q3g36"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nd8xh"]
-radius = 34.9607
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghv38"]
+size = Vector2(65, 54)
 
 [sub_resource type="Animation" id="Animation_sg5af"]
 length = 0.001
@@ -115,7 +115,7 @@ initial_state = NodePath("States/CrabIdle")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 8)
-shape = SubResource("CircleShape2D_nd8xh")
+shape = SubResource("RectangleShape2D_ghv38")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
