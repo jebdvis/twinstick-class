@@ -552,6 +552,7 @@ _data = {
 radius = 43.4173
 
 [node name="psychoMonkey" type="CharacterBody2D" node_paths=PackedStringArray("initial_state")]
+z_index = 1
 scale = Vector2(4, 4)
 collision_layer = 2
 collision_mask = 21
