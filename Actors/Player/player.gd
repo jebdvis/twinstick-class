@@ -21,6 +21,9 @@ func _input(event):
 		if event.button_index == 1 and event.is_pressed():
 			if $aimIndicCenter/CPUParticles2D.emitting == false:
 				$aimIndicCenter/CPUParticles2D.emitting = true
+				for i in sandArea.get_overlapping_bodies():
+					if i.is_in_group('enemy'):
+						i.hit(1)
 				print(sandArea.get_overlapping_bodies())
 			
 			
@@ -43,6 +46,8 @@ func _process(_delta):
 	
 	
 func _physics_process(_delta: float) -> void:
+	if (self.position.x - 576) > $"../PhantomCamera2D".limit_left:
+		$"../PhantomCamera2D".set_limit_left(self.position.x - 576)
 	$aimIndicCenter.look_at(get_global_mouse_position())
 	var mouseRotation = abs(fmod(rad_to_deg($aimIndicCenter.rotation), 360))
 	
