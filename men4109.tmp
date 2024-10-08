@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj5ypyt22aru7"]
+
+[ext_resource type="Texture2D" uid="uid://bcycuscdcwtqb" path="res://start-unpressed.aseprite" id="1_c3qb4"]
+[ext_resource type="Texture2D" uid="uid://cokmgymmm1c51" path="res://start-hover.aseprite" id="2_m25gm"]
+[ext_resource type="Script" path="res://texture_button.gd" id="3_01wus"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 646.0
+color = Color(0.114897, 0.114897, 0.114897, 1)
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 281.0
+offset_right = 600.0
+offset_bottom = 341.0
+texture_normal = ExtResource("1_c3qb4")
+texture_hover = ExtResource("2_m25gm")
+script = ExtResource("3_01wus")

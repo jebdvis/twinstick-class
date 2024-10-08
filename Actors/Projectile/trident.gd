@@ -24,9 +24,12 @@ func _ready():
 func _process(delta):
 	var collision = move_and_collide(velocity * delta)
 	if collision:
-		$pickupArea.monitoring = true
-		$pickupArea.monitorable = true
-		back_collision.disabled = false
-		velocity = Vector2(0,0)
-		animationPlayer.stop()
-		particles.emitting = false
+		if collision.get_collider().is_in_group("enemy"):
+			collision.get_collider().queue_free()
+		else:
+			$pickupArea.monitoring = true
+			$pickupArea.monitorable = true
+			back_collision.disabled = false
+			velocity = Vector2(0,0)
+			animationPlayer.stop()
+			particles.emitting = false

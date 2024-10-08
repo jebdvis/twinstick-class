@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var trident_scene: Resource
 
 @onready var animPlayer = $MainSprite/AnimationPlayer
+@onready var sandArea = $aimIndicCenter/Area2D
 
 var hasTrident = true
 var rolling:bool = false
@@ -18,7 +19,10 @@ func tridentPickup(body):
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and event.is_pressed():
-			$aimIndicCenter/CPUParticles2D.emitting = true
+			if $aimIndicCenter/CPUParticles2D.emitting == false:
+				$aimIndicCenter/CPUParticles2D.emitting = true
+				print(sandArea.get_overlapping_bodies())
+			
 			
 		if event.button_index == 2 and event.is_pressed() and hasTrident == true:
 			var new_trident = trident_scene.instantiate()

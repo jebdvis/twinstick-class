@@ -106,7 +106,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_0hi4i"]
 radius = 196.01
 
-[node name="Crab" type="CharacterBody2D" node_paths=PackedStringArray("initial_state")]
+[node name="Crab" type="CharacterBody2D" node_paths=PackedStringArray("initial_state") groups=["enemy"]]
 z_index = 1
 collision_layer = 2
 collision_mask = 23

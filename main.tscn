@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://c6kidse6y63l2"]
+[gd_scene load_steps=12 format=4 uid="uid://c6kidse6y63l2"]
 
 [ext_resource type="PackedScene" uid="uid://cgk3yf5b18363" path="res://Actors/Player/Player.tscn" id="1_4yu32"]
 [ext_resource type="Texture2D" uid="uid://cggyxmy0cj5k" path="res://Dungeon tileset/Dungeon tileset.png" id="2_ailae"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_hu524"]
 [ext_resource type="PackedScene" uid="uid://bbn4p2vo0bgbo" path="res://Actors/Enemies/psycho monkey/monkey-actor/psycho_monkey.tscn" id="7_m83ks"]
 [ext_resource type="PackedScene" uid="uid://cbyjs1xab0up1" path="res://Actors/Enemies/Crab/crab-actor/crab.tscn" id="8_e08pw"]
+[ext_resource type="AudioStream" uid="uid://b0yx5n6sr2eyu" path="res://sound/music/uptempo-harsh-breakcore-warehouse_170bpm_F#_minor.wav" id="8_pmlfk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_buyuy"]
 texture = ExtResource("2_ailae")
@@ -266,3 +267,8 @@ position = Vector2(379, 487)
 
 [node name="Crab" parent="." instance=ExtResource("8_e08pw")]
 position = Vector2(296, 211)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_pmlfk")
+autoplay = true
+bus = &"Music"

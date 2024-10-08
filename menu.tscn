@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://bj5ypyt22aru7"]
+
+[ext_resource type="Texture2D" uid="uid://bgc6hpqndtu5h" path="res://Actors/Player/Gnome-stand.png" id="1_2v4iu"]
+[ext_resource type="Texture2D" uid="uid://bcycuscdcwtqb" path="res://start-unpressed.aseprite" id="1_c3qb4"]
+[ext_resource type="Texture2D" uid="uid://cokmgymmm1c51" path="res://start-hover.aseprite" id="2_m25gm"]
+[ext_resource type="Script" path="res://texture_button.gd" id="3_01wus"]
+[ext_resource type="AudioStream" uid="uid://j6pjl2hc5mqq" path="res://sound/music/glitchy-breakcore-lead_170bpm_G_minor.wav" id="5_2e4rj"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 646.0
+color = Color(0.114897, 0.114897, 0.114897, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(281, 323)
+scale = Vector2(40.25, 40.25)
+texture = ExtResource("1_2v4iu")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 404.0
+offset_top = 231.0
+offset_right = 736.0
+offset_bottom = 430.0
+texture_normal = ExtResource("1_c3qb4")
+texture_hover = ExtResource("2_m25gm")
+stretch_mode = 0
+script = ExtResource("3_01wus")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_2e4rj")
+volume_db = 1.0
+pitch_scale = 0.85
+autoplay = true
+mix_target = 2
+bus = &"Music"
