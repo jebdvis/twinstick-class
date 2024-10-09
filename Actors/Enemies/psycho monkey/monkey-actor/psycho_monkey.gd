@@ -5,5 +5,6 @@ class_name psychoMonkey
 
 func hit(damage_num: int):
 	hp -= damage_num
+	$AudioStreamPlayer2D.play()
 	if hp <= 0:
 		queue_free()

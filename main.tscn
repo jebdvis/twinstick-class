@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c6kidse6y63l2"]
+[gd_scene load_steps=12 format=3 uid="uid://c6kidse6y63l2"]
 
 [ext_resource type="PackedScene" uid="uid://cgk3yf5b18363" path="res://Actors/Player/Player.tscn" id="1_4yu32"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_p1wep"]
@@ -6,9 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dv4dp8cd26pwy" path="res://hallway.tscn" id="3_otryt"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_hu524"]
 [ext_resource type="Script" path="res://hallremove.gd" id="6_1uaxx"]
-[ext_resource type="PackedScene" uid="uid://bbn4p2vo0bgbo" path="res://Actors/Enemies/psycho monkey/monkey-actor/psycho_monkey.tscn" id="7_m83ks"]
-[ext_resource type="PackedScene" uid="uid://cbyjs1xab0up1" path="res://Actors/Enemies/Crab/crab-actor/crab.tscn" id="8_e08pw"]
 [ext_resource type="AudioStream" uid="uid://b0yx5n6sr2eyu" path="res://sound/music/uptempo-harsh-breakcore-warehouse_170bpm_F#_minor.wav" id="8_pmlfk"]
+[ext_resource type="PackedScene" uid="uid://dcefhru4mjrf0" path="res://ui.tscn" id="10_72tud"]
 
 [sub_resource type="Resource" id="Resource_wfq14"]
 script = ExtResource("3_1q551")
@@ -27,12 +26,12 @@ size = Vector2(0.135802, 20)
 
 [node name="Player" parent="." instance=ExtResource("1_4yu32")]
 z_index = 2
-position = Vector2(578, 327)
+position = Vector2(579, 266)
 collision_mask = 63
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(578, -324)
+position = Vector2(579, 324)
 limit_top = 0
 limit_bottom = 0
 editor_draw_limits = true
@@ -41,7 +40,7 @@ editor_draw_limits = true
 script = ExtResource("4_hu524")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
-position = Vector2(578, -324)
+position = Vector2(579, 324)
 script = ExtResource("2_p1wep")
 follow_mode = 2
 follow_target = NodePath("../Player")
@@ -60,7 +59,7 @@ scale = Vector2(1, 37.84)
 collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PhantomCamera2D/LeftBorder"]
-position = Vector2(-42, 0.0264271)
+position = Vector2(-44, 0.0264271)
 scale = Vector2(648, 32.4)
 shape = SubResource("RectangleShape2D_sckrh")
 
@@ -82,15 +81,25 @@ position = Vector2(-2483, 489)
 scale = Vector2(1, 188.04)
 shape = SubResource("RectangleShape2D_nlcxp")
 
-[node name="psychoMonkey" parent="." instance=ExtResource("7_m83ks")]
-position = Vector2(379, 487)
+[node name="RightBorder" type="StaticBody2D" parent="PhantomCamera2D"]
+position = Vector2(661, 3.05176e-05)
+scale = Vector2(1, 1431.87)
+collision_layer = 32
+collision_mask = 5
 
-[node name="Crab" parent="." instance=ExtResource("8_e08pw")]
-position = Vector2(982, 545)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhantomCamera2D/RightBorder"]
+position = Vector2(-44, 0.0264271)
+scale = Vector2(648, 32.4)
+shape = SubResource("RectangleShape2D_sckrh")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_pmlfk")
+volume_db = -21.543
 autoplay = true
 bus = &"Music"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("10_72tud")]
 
 [connection signal="body_entered" from="PhantomCamera2D/hallreg" to="Player" method="_on_hallreg_body_entered"]

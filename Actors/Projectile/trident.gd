@@ -8,7 +8,7 @@ extends CharacterBody2D
 func fire(forward: Vector2, speed: float):
 	look_at(position + forward)
 	animationPlayer.current_animation = "trident_shake"
-	await animationPlayer.animation_finished
+	$AudioStreamPlayer2D.play()
 	particles.amount = 1000
 	particles.spread = 180
 	animationPlayer.play("fired")
@@ -24,8 +24,9 @@ func _ready():
 func _process(delta):
 	var collision = move_and_collide(velocity * delta)
 	if collision:
+		$AudioStreamPlayer2D.stop()
 		if collision.get_collider().is_in_group("enemy"):
-			collision.get_collider().queue_free()
+			collision.get_collider().hit(3)
 		else:
 			$pickupArea.monitoring = true
 			$pickupArea.monitorable = true

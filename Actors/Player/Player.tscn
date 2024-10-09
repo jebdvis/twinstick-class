@@ -1,8 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://cgk3yf5b18363"]
+[gd_scene load_steps=23 format=3 uid="uid://cgk3yf5b18363"]
 
 [ext_resource type="Script" path="res://Actors/Player/player.gd" id="1_yu7ye"]
 [ext_resource type="PackedScene" uid="uid://7kjlhs507dvi" path="res://Actors/Projectile/trident.tscn" id="3_kpqu7"]
+[ext_resource type="AudioStream" uid="uid://bd5b5s2ajft8k" path="res://sound/sfx/magical-whoosh-148459.mp3" id="4_c851s"]
 [ext_resource type="Texture2D" uid="uid://du2u2ojy1r6j3" path="res://Actors/Player/MasterGnomeSheet.aseprite" id="4_t73m5"]
+[ext_resource type="AudioStream" uid="uid://dn0u60bnwxbma" path="res://sound/sfx/woosh-230554.mp3" id="5_hg0xb"]
+[ext_resource type="AudioStream" uid="uid://cr6t3svh00a4" path="res://sound/sfx/hit-by-a-wood-230542.mp3" id="6_2dr4k"]
 
 [sub_resource type="GDScript" id="GDScript_bd3po"]
 script/source = "extends Area2D
@@ -261,9 +264,8 @@ _data = {
 "running_left": SubResource("Animation_nndn1")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qbo35"]
-radius = 20.0
-height = 62.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_oqhuk"]
+radius = 27.2029
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_issdj"]
 
@@ -277,6 +279,7 @@ collision_mask = 15
 motion_mode = 1
 safe_margin = 2.666
 script = ExtResource("1_yu7ye")
+move_speed = 600.0
 projectile_scene = SubResource("PackedScene_b1l1m")
 trident_scene = ExtResource("3_kpqu7")
 
@@ -300,9 +303,8 @@ speed_scale = 0.6
 position = Vector2(32, 0)
 
 [node name="MainCollider" type="CollisionShape2D" parent="."]
-visible = false
 z_index = 1
-shape = SubResource("CapsuleShape2D_qbo35")
+shape = SubResource("CircleShape2D_oqhuk")
 
 [node name="aimIndicCenter" type="Node2D" parent="."]
 
@@ -335,5 +337,14 @@ initial_velocity_max = 500.0
 scale_amount_max = 1.5
 scale_amount_curve = SubResource("Curve_y8b43")
 color = Color(0.672142, 0.627135, 0.116728, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_c851s")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_hg0xb")
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_2dr4k")
 
 [connection signal="animation_finished" from="MainSprite/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

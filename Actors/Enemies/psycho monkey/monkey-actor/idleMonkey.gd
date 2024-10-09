@@ -15,3 +15,6 @@ func process_state(_delta: float):
 		get_parent().get_parent().get_node("AnimationPlayer").play("sleeping")
 		change_state.emit(chasing_state)
 	
+func change_to_chase(body):
+	chasing_state.target = body as CharacterBody2D
+	change_state.emit(chasing_state)

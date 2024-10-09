@@ -1,7 +1,12 @@
 extends State
 
-@export var chase_speed: float = 400.0
+@export var chase_speed: float = 500.0
 var target: CharacterBody2D
+var detect_range: Area2D
+var attacking = false
+
+func initialize():
+	detect_range = body.get_node("DetectionRange")
 
 func process_state(delta: float):
 	#gives direction in degrees: left is +/- 180, up is -90, down is 90
@@ -12,6 +17,16 @@ func process_state(delta: float):
 	anim_controller(anim_player, direction)
 	body.velocity = (target.position - body.position).normalized() * chase_speed
 	body.move_and_slide()
+	
+	if body.position.distance_to(target.position) <= 100:
+		if attacking == false:
+			attacking = true
+			await get_tree().create_timer(2).timeout
+			if body.position.distance_to(target.position) <= 100:
+				print("hi")
+				target.hit(1)
+				attacking = false
+	
 	
 func anim_controller(anim_player:AnimationPlayer, direction:float):
 	if direction >= -22.5 and direction <=  22.5:

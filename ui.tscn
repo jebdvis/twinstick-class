@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcefhru4mjrf0"]
+
+[ext_resource type="Script" path="res://health.gd" id="1_f3mlg"]
+[ext_resource type="Texture2D" uid="uid://d0b045stctwg8" path="res://hearrt.aseprite" id="1_ugr47"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -4.0
+offset_right = 8.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 141.0
+offset_bottom = 76.0
+scale = Vector2(0.44, 0.44)
+theme_override_font_sizes/font_size = 50
+text = "Score"
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_f3mlg")
+
+[node name="heart1" type="TextureRect" parent="Control"]
+layout_mode = 2
+offset_left = 97.0
+offset_top = 601.0
+offset_right = 137.0
+offset_bottom = 641.0
+texture = ExtResource("1_ugr47")
+
+[node name="heart2" type="TextureRect" parent="Control"]
+layout_mode = 2
+offset_left = 53.0
+offset_top = 601.0
+offset_right = 93.0
+offset_bottom = 641.0
+texture = ExtResource("1_ugr47")
+
+[node name="heart3" type="TextureRect" parent="Control"]
+layout_mode = 2
+offset_left = 9.0
+offset_top = 601.0
+offset_right = 49.0
+offset_bottom = 641.0
+texture = ExtResource("1_ugr47")

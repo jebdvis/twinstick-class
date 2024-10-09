@@ -15,3 +15,8 @@ func process_state(_delta: float):
 	if not potential_targets.is_empty():
 		chasing_state.target = (potential_targets[0]) as CharacterBody2D
 		change_state.emit(chasing_state)
+
+func change_to_chase(body):
+	chasing_state.target = body as CharacterBody2D
+	change_state.emit(chasing_state)
+	

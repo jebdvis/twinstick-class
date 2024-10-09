@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://cbyjs1xab0up1"]
+[gd_scene load_steps=15 format=3 uid="uid://cbyjs1xab0up1"]
 
 [ext_resource type="Texture2D" uid="uid://bnm1o8frb5rp7" path="res://Actors/Enemies/Crab/Crab Enemy Camacebra Games/MasterSprite.aseprite" id="1_c5e1w"]
 [ext_resource type="Script" path="res://Actors/Enemies/Crab/crab-actor/crab.gd" id="1_kbpho"]
 [ext_resource type="Script" path="res://Actors/Enemies/Crab/crab-actor/crab_idle.gd" id="3_7ufup"]
 [ext_resource type="Script" path="res://Actors/Enemies/Crab/crab-actor/crab_chasing_attack.gd" id="4_kb6h1"]
 [ext_resource type="Script" path="res://Actors/Enemies/Crab/crab-actor/crab_teleportin.gd" id="5_q3g36"]
+[ext_resource type="AudioStream" uid="uid://kh4usnk66edp" path="res://sound/sfx/goblin-death-6729.mp3" id="6_7xf7y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nd8xh"]
 radius = 34.9607
@@ -142,6 +143,7 @@ script = ExtResource("3_7ufup")
 
 [node name="CrabChasing_Attack" type="Node" parent="States"]
 script = ExtResource("4_kb6h1")
+chase_speed = 400.0
 
 [node name="CrabTeleportin" type="Node" parent="States"]
 script = ExtResource("5_q3g36")
@@ -150,3 +152,6 @@ script = ExtResource("5_q3g36")
 target_position = Vector2(0, 10000)
 collision_mask = 16
 collide_with_areas = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_7xf7y")
