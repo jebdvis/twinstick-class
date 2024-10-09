@@ -29,6 +29,7 @@ size = Vector2(0.135802, 20)
 z_index = 2
 position = Vector2(578, 327)
 collision_mask = 63
+move_speed = null
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
@@ -74,7 +75,7 @@ scale = Vector2(1, 188.04)
 shape = SubResource("RectangleShape2D_nlcxp")
 
 [node name="hallreg" type="Area2D" parent="PhantomCamera2D"]
-position = Vector2(2482, 0)
+position = Vector2(1895, 0)
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PhantomCamera2D/hallreg"]

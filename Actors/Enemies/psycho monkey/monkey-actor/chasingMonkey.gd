@@ -1,6 +1,6 @@
 extends State
 
-@export var chase_speed: float = 200.0
+@export var chase_speed: float = 400.0
 var target: CharacterBody2D
 
 func process_state(delta: float):

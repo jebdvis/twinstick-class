@@ -9,6 +9,8 @@ extends CharacterBody2D
 
 var hasTrident = true
 var rolling:bool = false
+var hallreg: Array = []
+var hallway = preload("res://hallway.tscn")
 
 func tridentPickup(body):
 	if body == self:
@@ -44,8 +46,8 @@ func _input(event):
 func _process(_delta):
 	pass
 	
-	
 func _physics_process(_delta: float) -> void:
+	
 	if (self.position.x - 576) > $"../PhantomCamera2D".limit_left:
 		$"../PhantomCamera2D".set_limit_left(self.position.x - 576)
 	$aimIndicCenter.look_at(get_global_mouse_position())
@@ -84,3 +86,12 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "rolling" or anim_name == "roll_left":
 		rolling = false
 		move_speed = 400
+
+
+func _on_hallreg_body_entered(body):
+	if body.is_in_group('walls'):
+		if body.get_parent() not in hallreg:
+			hallreg.append(body.get_parent)
+			var new_hall = hallway.instantiate()
+			$"..".add_child(new_hall)
+			new_hall.position = Vector2(body.get_parent().position.x + 1152, 0)

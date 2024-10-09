@@ -77,6 +77,7 @@ roll={
 2d_physics/layer_3="player_bullets"
 2d_physics/layer_4="enemy_bullets"
 2d_physics/layer_5="wallz"
+2d_physics/layer_6="left-bound"
 
 [phantom_camera]
 

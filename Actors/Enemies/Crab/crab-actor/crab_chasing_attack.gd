@@ -1,7 +1,7 @@
 extends State
 
 
-@export var chase_speed: float = 300.0
+@export var chase_speed: float = 325.0
 var target: CharacterBody2D
 var teleport: State
 

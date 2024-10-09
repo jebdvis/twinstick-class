@@ -106,7 +106,7 @@ animations = [{
 [node name="tridentBody" type="CharacterBody2D"]
 z_index = 2
 collision_layer = 4
-collision_mask = 18
+collision_mask = 50
 script = ExtResource("1_cghhy")
 
 [node name="frontCollision" type="CollisionShape2D" parent="."]
